@@ -63,14 +63,14 @@ app.post("/", express.urlencoded({ extended: false }), (req, res) => {
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "11223344",
+              text: "> query 15 gate.balanceOf 0x320b9E352b1D5DE458F5A8001633b08af302892A",
             },
           },
           {
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "query 15 gate.balanceOf 0x320b9E352b1D5DE458F5A8001633b08af302892A",
+              text: "11223344",
             },
           },
         ],
