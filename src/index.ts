@@ -27,7 +27,28 @@ app.post("/", express.urlencoded({ extended: false }), (req, res) => {
     req.originalUrl
   );
 
-  res.send("Hello World!");
+  res.type("application/json");
+  res.send(
+    JSON.stringify({
+      response_type: "in_channel",
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "*It's 80 degrees right now.*",
+          },
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Partly cloudy today and tomorrow",
+          },
+        },
+      ],
+    })
+  );
 });
 
 app.listen(port, () => {
