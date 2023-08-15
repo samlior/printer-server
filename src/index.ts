@@ -1,4 +1,5 @@
 import express from "express";
+import axios from "axios";
 
 const app = express();
 
@@ -49,6 +50,39 @@ app.post("/", express.urlencoded({ extended: false }), (req, res) => {
       ],
     })
   );
+
+  const params: any = req.baseUrl;
+
+  setTimeout(() => {
+    console.log("reach timeout");
+    axios
+      .post(
+        params.response_url,
+        {
+          response_type: "in_channel",
+          blocks: [
+            {
+              type: "header",
+              text: {
+                type: "text",
+                text: "This is a delay response",
+              },
+            },
+          ],
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log("response:", response.headers, response.data);
+      })
+      .catch((err) => {
+        console.log("axios error:", err);
+      });
+  }, 3000);
 });
 
 app.listen(port, () => {
