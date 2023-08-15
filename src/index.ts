@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.post("/", (req, res) => {
+app.post("/", express.urlencoded({ extended: false }), (req, res) => {
   console.log(
     "post req:",
     req.headers,
